@@ -217,20 +217,10 @@ pip install -r requirements.txt
 
 ### Step 3 — Configure environment
 
-Create a `.env` file in the project root and add your provider credentials and settings. Use real keys from OpenAI, Pinecone, and Tavily; the admin key is a secret value you choose yourself.
+Copy `.env.example` to `.env` in the project root, then replace the placeholders with your own credentials. The template includes every provider key used by this project (OpenAI, Pinecone, and Tavily), plus the admin secret and optional settings. Real API credentials cannot be prefilled in this repository; obtain them from each provider and keep `.env` private.
 
 ```env
-OPENAI_API_KEY=your_openai_api_key_here
-TAVILY_API_KEY=your_tavily_api_key_here
-PINECONE_API_KEY=your_pinecone_api_key_here
-PINECONE_INDEX_NAME=fde-hr-policy-rag
-PINECONE_NAMESPACE=company-hr-kb
-OPENAI_MODEL=gpt-4o-mini
-EMBEDDING_MODEL=text-embedding-3-small
-ADMIN_API_KEY=change-me-in-production
-APP_ENV=development
-TOP_K=4
-MAX_RETRIES=1
+cp .env.example .env
 ```
 
 `OPENAI_API_KEY` and `PINECONE_API_KEY` are needed for private-KB question answering. `TAVILY_API_KEY` is needed only when the workflow falls back to web search. `ADMIN_API_KEY` protects document uploads. See [API keys and configuration](#api-keys-and-configuration) above for details and defaults.
